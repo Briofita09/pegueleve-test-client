@@ -1,0 +1,73 @@
+.backBox {
+  margin-left: 5%;
+  display: flex;
+}
+
+.backIconSignUp {
+  height: auto;
+  width: 175%;
+  padding-top: 50%;
+}
+
+.signUpTitle {
+  font-size: 100%;
+  padding-left: 5%;
+}
+
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3%;
+  margin-top: 10%;
+}
+
+.inputForm {
+  padding-bottom: 5%;
+}
+
+label {
+  margin-right: 3%;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  background: none;
+}
+
+.signUpback {
+  background: linear-gradient(white, rgb(186, 212, 206));
+  height: 100vh;
+}
+
+.signUpBtn {
+  border: none;
+  color: white;
+  padding: 5% 5%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  background-color: rgb(0, 207, 169);
+  border-radius: 5px;
+  width: fit-content;
+  font-weight: bolder;
+  font-size: 100%;
+}
+
+.LogoHome {
+  height: auto;
+  width: 350px;
+  margin: 50px;
+}
+
+.inputLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputFormLogin {
+  margin-bottom: 15%;
+  width: 50px;
+}
