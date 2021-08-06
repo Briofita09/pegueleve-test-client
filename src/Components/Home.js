@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Logo from "../assets/img/logo-pegueleve.png";
+import { useHistory } from "react-router-dom";
 
 import TextInput from "./TextInput";
 
@@ -9,6 +10,8 @@ export default function Home() {
     email: "",
     password: "",
   });
+
+  const history = useHistory();
 
   function handleChange(event) {
     setState({ ...state, [event.target.name]: event.target.value });
@@ -47,6 +50,7 @@ export default function Home() {
         response.data.password === state.password
       ) {
         console.log("usuario valido");
+        history.push(`/${response.data._id}/products`);
       } else {
         window.alert("usuario invalido");
       }
