@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Logo from "../assets/img/logo-pegueleve.png";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import TextInput from "./TextInput";
 
@@ -66,6 +66,10 @@ export default function Home() {
       <div>
         <img src={Logo} className="LogoHome" />
       </div>
+
+      <Link to={"/signup"}>
+        <button>Criar Conta</button>
+      </Link>
 
       <form onSubmit={validate && handleSubmit} className="inputLogin">
         <div className="inputFormLogin">

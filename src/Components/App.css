@@ -71,3 +71,63 @@ input {
   margin-bottom: 15%;
   width: 50px;
 }
+
+.navLogo {
+  width: 100vw;
+}
+
+.navBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.navItem {
+  padding-left: 5%;
+}
+
+.productBg {
+  background: linear-gradient(white, rgb(0, 207, 169));
+  height: 100vmax;
+}
+
+.productContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-top: 3%;
+  width: 100%;
+  margin: auto;
+}
+
+.productBox {
+  border: 1px solid black;
+  position: relative;
+  width: 40%;
+  height: 40%;
+  margin: 2%;
+}
+
+.productItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: space-between;
+}
+
+.imgItem {
+  position: absolute;
+  left: 40%;
+  top: 30%;
+}
+
+.logoItem {
+  height: auto;
+  width: 250%;
+}
+
+.subProductItem {
+  padding-left: 7%;
+}

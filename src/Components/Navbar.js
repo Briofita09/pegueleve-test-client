@@ -10,15 +10,15 @@ import { RiChatNewFill } from "react-icons/ri";
 export default function Navbar(props) {
   return (
     <header>
-      <img src={Logo} alt="logo" />
-      <nav>
-        <NavLink to="/signup">
+      <img src={Logo} alt="logo" className="navLogo" />
+      <nav className="navBox">
+        <NavLink to="/signup" className="navItem">
           <IoPersonAdd />
         </NavLink>
-        <NavLink to={`/${props.user}/products`}>
+        <NavLink to={`/${props.user}/products`} className="navItem">
           <FaBoxes />
         </NavLink>
-        <NavLink to={`/${props.user}/newProduct`}>
+        <NavLink to={`/${props.user}/newProduct`} className="navItem">
           <RiChatNewFill />
         </NavLink>
       </nav>

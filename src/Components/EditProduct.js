@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
 import TextInput from "./TextInput";
 
-function NewProduct() {
+function EditProduct() {
   const [state, setState] = useState({
     _id: "",
     prod_id: 0,
@@ -16,38 +16,65 @@ function NewProduct() {
     updated: "",
   });
 
-  const { _id } = useParams();
+  const { _id, prod_id } = useParams();
+  const history = useHistory();
 
   function handleChange(event) {
-    setState({
-      ...state,
-      [event.target.name]: event.target.value,
-      prod_id: Date.now().toString(),
-      insertion: Date(),
-    });
+    setState({ [event.target.name]: event.target.value, updated: Date() });
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      const response = await axios.get(
+      let response = await axios.get(
         `https://ironrest.herokuapp.com/pegueTest/${_id}`
       );
+      let response2 = response.data.products.map((product) => {
+        if (product.prod_id === prod_id) {
+          product = { ...state };
+          return product;
+        } else {
+          return product;
+        }
+      });
 
-      let newProducts = [...response.data.products, state];
+      response.products = [...response2];
 
-      let productsUpdate = await axios.put(
-        `https://ironrest.herokuapp.com/pegueTest/${response.data._id}`,
-        { products: newProducts }
+      let response3 = await axios.put(
+        `https://ironrest.herokuapp.com/pegueTest/${_id}`,
+        response
       );
+      history.goBack();
     } catch (err) {
       console.error(err);
     }
   }
+
+  useEffect(() => {
+    async function fetchEdit() {
+      try {
+        let resposta = await axios.get(
+          `https://ironrest.herokuapp.com/pegueTest/${_id}`
+        );
+        let result = resposta.data.products.find((product) => {
+          return product.prod_id === prod_id;
+        });
+
+        if (result) {
+          setState({ ...result });
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchEdit();
+  }, [_id, prod_id]);
   console.log(state);
   return (
     <div>
       <Navbar user={_id} />
+      <h1>Editar Produto</h1>
+      <hr />
       <form onSubmit={handleSubmit}>
         <div>
           <div>
@@ -88,11 +115,11 @@ function NewProduct() {
           </div>
         </div>
         <div>
-          <button type="submit">Adicionar produto</button>
+          <button type="submit">Editar produto</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default NewProduct;
+export default EditProduct;

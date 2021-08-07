@@ -25,7 +25,9 @@ function SignUp() {
     event.preventDefault();
 
     try {
-      await axios.post("https://ironrest.herokuapp.com/pegueTest", ...state);
+      await axios.post("https://ironrest.herokuapp.com/pegueTest", {
+        ...state,
+      });
       window.alert("usuario cadastrado");
     } catch (err) {
       console.error(err);
