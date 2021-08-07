@@ -59,42 +59,42 @@ export default function Home() {
     }
   }
 
-  console.log(state);
-
   return (
-    <div className="contentBox">
-      <div>
-        <img src={Logo} className="LogoHome" />
+    <div className="productBg100">
+      <div className="editContainer">
+        <div>
+          <img src={Logo} className="LogoHome" />
+        </div>
+        <form onSubmit={validate && handleSubmit}>
+          <div className="editItem">
+            <TextInput
+              placeholder="E-mail"
+              name="email"
+              value={state.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="editItem">
+            <TextInput
+              type="text"
+              placeholder="Password"
+              name="password"
+              value={state.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="editItem">
+            <button type="submit" className="editbtn">
+              Entrar
+            </button>
+          </div>
+          <Link to={"/signup"}>
+            <p>Não tem conta? Crie uma agora!</p>
+          </Link>
+        </form>
       </div>
-
-      <Link to={"/signup"}>
-        <button>Criar Conta</button>
-      </Link>
-
-      <form onSubmit={validate && handleSubmit} className="inputLogin">
-        <div className="inputFormLogin">
-          <TextInput
-            placeholder="E-mail"
-            name="email"
-            value={state.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="inputFormLogin">
-          <TextInput
-            type="text"
-            placeholder="Password"
-            name="password"
-            value={state.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="signUpBtn">
-          Entrar
-        </button>
-      </form>
     </div>
   );
 }

@@ -19,8 +19,6 @@ function ProductList() {
         const response = await axios.get(
           `https://ironrest.herokuapp.com/pegueTest/${_id}`
         );
-        console.log(response.data.products[0].prod_id);
-        console.log(response.data.products);
         setState({ products: [...response.data.products] });
       } catch (err) {
         console.error(err);
@@ -45,7 +43,7 @@ function ProductList() {
                 </Link>
               </div>
               <div className="productItem">
-                <p>Unidades: {product.quantity}</p>
+                <p>Un: {product.quantity}</p>
                 <div className="subProductItem">
                   <Link to={`${_id}/edit/${product.prod_id}`} title="Editar">
                     <FaEdit />

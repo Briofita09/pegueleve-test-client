@@ -88,13 +88,17 @@ input {
 
 .productBg {
   background: linear-gradient(white, rgb(0, 207, 169));
-  height: 100vmax;
+}
+
+.productBg100 {
+  background: linear-gradient(white, rgb(0, 207, 169));
+  height: 115vh;
 }
 
 .productContainer {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   padding-top: 3%;
   width: 100%;
@@ -107,6 +111,8 @@ input {
   width: 40%;
   height: 40%;
   margin: 2%;
+  background: white;
+  box-shadow: 5px 2px 2px black;
 }
 
 .productItem {
@@ -130,4 +136,24 @@ input {
 
 .subProductItem {
   padding-left: 7%;
+}
+
+.editbtn {
+  border: 1px solid green;
+  background: green;
+  color: white;
+  border-radius: 2%;
+  padding: 2%;
+  text-align: center;
+}
+
+.editContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.editItem {
+  padding: 2%;
+  align-items: center;
 }

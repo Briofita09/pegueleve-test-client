@@ -19,8 +19,32 @@ function EditProduct() {
   const { _id, prod_id } = useParams();
   const history = useHistory();
 
+  useEffect(() => {
+    async function fetchEdit() {
+      try {
+        let resposta = await axios.get(
+          `https://ironrest.herokuapp.com/pegueTest/${_id}`
+        );
+        let result = resposta.data.products.find((product) => {
+          return product.prod_id === prod_id;
+        });
+
+        if (result) {
+          setState({ ...result });
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchEdit();
+  }, [_id, prod_id]);
+
   function handleChange(event) {
-    setState({ [event.target.name]: event.target.value, updated: Date() });
+    setState({
+      ...state,
+      [event.target.name]: event.target.value,
+      updated: Date(),
+    });
   }
 
   async function handleSubmit(event) {
@@ -49,35 +73,14 @@ function EditProduct() {
       console.error(err);
     }
   }
-
-  useEffect(() => {
-    async function fetchEdit() {
-      try {
-        let resposta = await axios.get(
-          `https://ironrest.herokuapp.com/pegueTest/${_id}`
-        );
-        let result = resposta.data.products.find((product) => {
-          return product.prod_id === prod_id;
-        });
-
-        if (result) {
-          setState({ ...result });
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    fetchEdit();
-  }, [_id, prod_id]);
-  console.log(state);
   return (
-    <div>
+    <div className="productBg100">
       <Navbar user={_id} />
       <h1>Editar Produto</h1>
       <hr />
       <form onSubmit={handleSubmit}>
-        <div>
-          <div>
+        <div className="editContainer">
+          <div className="editItem">
             <TextInput
               label="Nome do produto"
               name="name"
@@ -86,7 +89,7 @@ function EditProduct() {
               required
             />
           </div>
-          <div>
+          <div className="editItem">
             <TextInput
               label="Valor do produto"
               name="value"
@@ -95,7 +98,7 @@ function EditProduct() {
               required
             />
           </div>
-          <div>
+          <div className="editItem">
             <TextInput
               label="Quantidade do produto"
               name="quantity"
@@ -104,7 +107,7 @@ function EditProduct() {
               required
             />
           </div>
-          <div>
+          <div className="editItem">
             <TextInput
               label="Descrição do produto"
               name="description"
@@ -114,8 +117,10 @@ function EditProduct() {
             />
           </div>
         </div>
-        <div>
-          <button type="submit">Editar produto</button>
+        <div className="editItem">
+          <button type="submit" className="editbtn">
+            Editar produto
+          </button>
         </div>
       </form>
     </div>

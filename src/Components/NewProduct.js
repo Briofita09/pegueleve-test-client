@@ -44,13 +44,14 @@ function NewProduct() {
       console.error(err);
     }
   }
-  console.log(state);
   return (
-    <div>
+    <div className="productBg100">
       <Navbar user={_id} />
+      <h1>Adicionar Produto</h1>
+      <hr />
       <form onSubmit={handleSubmit}>
-        <div>
-          <div>
+        <div className="editContainer">
+          <div className="editItem">
             <TextInput
               label="Nome do produto"
               name="name"
@@ -59,7 +60,7 @@ function NewProduct() {
               required
             />
           </div>
-          <div>
+          <div className="editItem">
             <TextInput
               label="Valor do produto"
               name="value"
@@ -68,7 +69,7 @@ function NewProduct() {
               required
             />
           </div>
-          <div>
+          <div className="editItem">
             <TextInput
               label="Quantidade do produto"
               name="quantity"
@@ -77,7 +78,7 @@ function NewProduct() {
               required
             />
           </div>
-          <div>
+          <div className="editItem">
             <TextInput
               label="Descrição do produto"
               name="description"
@@ -87,8 +88,10 @@ function NewProduct() {
             />
           </div>
         </div>
-        <div>
-          <button type="submit">Adicionar produto</button>
+        <div className="editItem">
+          <button type="submit" className="editbtn">
+            Adicionar produto
+          </button>
         </div>
       </form>
     </div>
